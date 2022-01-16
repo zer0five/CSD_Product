@@ -4,19 +4,19 @@
 
 - [x] Xây dựng lớp Product: ID (int), Name (string), Price (double), Quantity (int)
 
-- [ ] Xây dựng LinkedList<T> chứa các Product (LinkedList<Product>)
+- [x] Xây dựng LinkedList<T> chứa các Product (LinkedList<Product>)
 
 - [ ] Viết chương trình Console, thực hiện quản lý Product với các chức năng sau:
-    - [ ] Thêm 1 Product mới
+    - [x] Thêm 1 Product mới
         - [ ] Hiển thị kho Product sau khi thêm
 
-    - [ ] Tìm kiếm Product theo Name
-        - [ ] Liệt kê tất cả các Product mà Name có chứa search key (tìm kiếm KHÔNG phân biệt hoa thường)
+    - [x] Tìm kiếm Product theo Name
+        - [x] Liệt kê tất cả các Product mà Name có chứa search key (tìm kiếm KHÔNG phân biệt hoa thường)
           contains (không sử dụng so sánh == )
-    - [ ] Cập nhật giá tiền của Product
-        - [ ] nhập ID
+    - [x] Cập nhật giá tiền của Product
+        - [x] nhập ID
         - [ ] Hiển thị kho Product sau khi cập nhật
-    - [ ] Thoát
+    - [x] Thoát
 
     - [x] 2 chức năng ẩn:
         - [x] đọc tập tin

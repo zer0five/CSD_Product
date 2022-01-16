@@ -14,6 +14,8 @@ public abstract class Manager<T> {
 
     public abstract void handler(String choice);
 
+    public abstract T input();
+
     public abstract void add(T t);
 
     public abstract void edit(T t);

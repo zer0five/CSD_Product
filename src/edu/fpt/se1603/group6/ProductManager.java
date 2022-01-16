@@ -1,6 +1,5 @@
 package edu.fpt.se1603.group6;
 
-import java.util.LinkedList;
 import java.util.Scanner;
 
 public class ProductManager extends Manager<Product> {
@@ -25,15 +24,52 @@ public class ProductManager extends Manager<Product> {
     public void handler(String choice) {
         switch (choice) {
             case "1":
-//                add();
+                System.out.println("====[ Add product ]====");
+                add(input());
                 break;
             case "2":
-//                find();
+                System.out.println("====[ Find product ]====");
+                find(input.getString("Enter name: "));
                 break;
             case "3":
-//                edit();
+                System.out.println("====[ Edit product ]====");
+                Product product;
+                while (true) {
+                    int id = input.getInt("Enter id: ");
+                    product = findExact(String.valueOf(id));
+                    if (product == null) {
+                        System.out.println("Product with id " + id + " is not existed!");
+                    } else {
+                        break;
+                    }
+                }
+                edit(product);
+                break;
+            case "4":
+                System.out.println("Goodbye!");
+                break;
+            default:
+                System.out.println("Invalid choice, please choose from 1 to 4!");
                 break;
         }
+    }
+
+    @Override
+    public Product input() {
+        Product product = new Product();
+        while (true) {
+            int id = input.getInt("Enter id: ");
+            if (findExact(String.valueOf(id)) == null) {
+                product.setId(id);
+                break;
+            } else {
+                System.out.println("Id is existed, please try again!");
+            }
+        }
+        product.setName(input.getString("Enter name: "));
+        product.setQuantity(input.getInt("Enter quantity: "));
+        product.setPrice(input.getDouble("Enter price: "));
+        return product;
     }
 
     @Override
@@ -60,7 +96,7 @@ public class ProductManager extends Manager<Product> {
     @Override
     public Product findExact(String id) {
         for (Product product : list) {
-            if (product.getId() == id) {
+            if (String.valueOf(product.getId()).equals(id)) {
                 return product;
             }
         }
