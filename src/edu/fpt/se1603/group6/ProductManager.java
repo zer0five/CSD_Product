@@ -1,6 +1,7 @@
 package edu.fpt.se1603.group6;
 
 import java.util.LinkedList;
+import java.util.Scanner;
 
 public class ProductManager extends Manager<Product> {
 
@@ -42,7 +43,9 @@ public class ProductManager extends Manager<Product> {
 
     @Override
     public void edit(Product product) {
-
+        Scanner sc = new Scanner(System.in);
+        System.out.print("Please input price for product: ");
+        product.setPrice(sc.nextDouble());
     }
 
     @Override
@@ -56,6 +59,11 @@ public class ProductManager extends Manager<Product> {
 
     @Override
     public Product findExact(String id) {
+        for (Product product : list) {
+            if (product.getId() == id) {
+                return product;
+            }
+        }
         return null;
     }
 }
