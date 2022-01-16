@@ -122,4 +122,24 @@ public class Product implements Serializable {
         this.quantity = quantity;
     }
 
+    /**
+     * calculate the amount
+     *
+     * @return calculateAmount
+     * @author Nguyễn Nhật Hùng - CE160506
+     */
+    public double calculateAmount() {
+        return getQuantity() * getPrice();
+    }
+
+    /**
+     * toString
+     *
+     * @return toString
+     * @author Nguyễn Nhật Hùng - CE160506
+     */
+    @Override
+    public String toString() {
+        return String.format("| %-18s | %8d | %4.0f$ | %5.0f$ |", getName(), getQuantity(), getPrice(), calculateAmount());
+    }
 }
