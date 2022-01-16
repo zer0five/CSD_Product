@@ -45,8 +45,8 @@ public class ProductSerialize {
     /**
      * Load Products to LinkedList
      *
-     * @return An empty LinkedList if file is not exists or load failed, otherwise LinkedList of Products
      * @author Trịnh Đức Tuấn Khoa - CE160799
+     * @return An empty LinkedList if file is not exists or load failed, otherwise LinkedList of Products
      */
     public LinkedList<Product> loadProducts() {
         if (file.exists()) {
