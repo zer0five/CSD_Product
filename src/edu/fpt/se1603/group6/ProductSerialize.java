@@ -10,31 +10,31 @@ import java.util.LinkedList;
  */
 public class ProductSerialize {
     /**
-     * File of file
+     * The file
      */
     private File file;
 
     /**
-     *Constructor of productSerialize
+     * Constructor of ProductSerialize class
      *
-     * @param fileName
+     * @param fileName File name
      */
     public ProductSerialize(String fileName) {
         this.file = new File(fileName);
     }
 
     /**
-     * Get file of productSerialize
+     * Get file
      *
+     * @return The file
      * @author Trịnh Đức Tuấn Khoa - CE160799
-     * @return file
      */
     public File getFile() {
         return file;
     }
 
     /**
-     * Set file of productSerialize
+     * Set file
      *
      * @author Trịnh Đức Tuấn Khoa - CE160799
      */
@@ -45,22 +45,19 @@ public class ProductSerialize {
     /**
      * Load Products to LinkedList
      *
+     * @return An empty LinkedList if file is not exists or load failed, otherwise LinkedList of Products
      * @author Trịnh Đức Tuấn Khoa - CE160799
-     * @return The list
      */
     public LinkedList<Product> loadProducts() {
-        LinkedList<Product> list = new LinkedList<>();
         if (file.exists()) {
-            try {
-                FileInputStream fis = new FileInputStream(file);
-                ObjectInputStream ois = new ObjectInputStream(fis);
+            try (ObjectInputStream ois = new ObjectInputStream(new FileInputStream(file))) {
+                // noinspection unchecked
                 return (LinkedList<Product>) ois.readObject();
-            } catch (IOException | ClassNotFoundException e) {
-                return list;
+            } catch (IOException | ClassNotFoundException | ClassCastException ignored) {
+                // IGNORED
             }
-        } else {
-           return list;
         }
+        return new LinkedList<>();
     }
 
     /**
@@ -70,9 +67,7 @@ public class ProductSerialize {
      * @return true if success, otherwise false
      */
     public boolean saveProducts(LinkedList<Product> list) {
-        try {
-            FileOutputStream fos = new FileOutputStream(file);
-            ObjectOutputStream oos = new ObjectOutputStream(fos);
+        try (ObjectOutputStream oos = new ObjectOutputStream(new FileOutputStream(file))) {
             oos.writeObject(list);
             return true;
         } catch (IOException e) {
