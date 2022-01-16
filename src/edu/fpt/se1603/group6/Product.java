@@ -1,6 +1,8 @@
 package edu.fpt.se1603.group6;
 
-public class Product {
+import java.io.Serializable;
+
+public class Product implements Serializable {
     private int id;
     private String name;
     private double price;
