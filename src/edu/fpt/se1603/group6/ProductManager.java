@@ -1,5 +1,7 @@
 package edu.fpt.se1603.group6;
 
+import java.util.LinkedList;
+
 public class ProductManager extends Manager<Product> {
 
     private final Input input;
@@ -45,7 +47,11 @@ public class ProductManager extends Manager<Product> {
 
     @Override
     public void find(String name) {
-
+        for (Product product : list) {
+            if (product.getName().toLowerCase().contains(name.toLowerCase())) {
+                System.out.println(product);
+            }
+        }
     }
 
     @Override
