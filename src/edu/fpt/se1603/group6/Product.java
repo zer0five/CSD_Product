@@ -45,8 +45,8 @@ public class Product implements Serializable {
     /**
      * Get the id of the product
      *
-     * @author Nguyễn Nhật Hùng - CE160506
      * @return the id of the product
+     * @author Nguyễn Nhật Hùng - CE160506
      */
     public int getId() {
         return id;
@@ -55,8 +55,8 @@ public class Product implements Serializable {
     /**
      * Set the id of the product
      *
-     * @author Nguyễn Nhật Hùng - CE160506
      * @param id the id of the product
+     * @author Nguyễn Nhật Hùng - CE160506
      */
     public void setId(int id) {
         this.id = id;
@@ -65,8 +65,8 @@ public class Product implements Serializable {
     /**
      * Get the name of the product
      *
-     * @author Nguyễn Nhật Hùng - CE160506
      * @return the name of the product
+     * @author Nguyễn Nhật Hùng - CE160506
      */
     public String getName() {
         return name;
@@ -75,8 +75,8 @@ public class Product implements Serializable {
     /**
      * Set the name of the product
      *
-     * @author Nguyễn Nhật Hùng - CE160506
      * @param name the name of the product
+     * @author Nguyễn Nhật Hùng - CE160506
      */
     public void setName(String name) {
         this.name = name;
@@ -85,8 +85,8 @@ public class Product implements Serializable {
     /**
      * Get the price of the product
      *
-     * @author Nguyễn Nhật Hùng - CE160506
      * @return the price of the product
+     * @author Nguyễn Nhật Hùng - CE160506
      */
     public double getPrice() {
         return price;
@@ -95,8 +95,8 @@ public class Product implements Serializable {
     /**
      * Get the price of the product
      *
-     * @author Nguyễn Nhật Hùng - CE160506
      * @param price the price of the product
+     * @author Nguyễn Nhật Hùng - CE160506
      */
     public void setPrice(double price) {
         this.price = price;
@@ -105,8 +105,8 @@ public class Product implements Serializable {
     /**
      * Get the quantity of the product
      *
-     * @author Nguyễn Nhật Hùng - CE160506
      * @return the quantity of the product
+     * @author Nguyễn Nhật Hùng - CE160506
      */
     public int getQuantity() {
         return quantity;
@@ -115,8 +115,8 @@ public class Product implements Serializable {
     /**
      * Get the quantity of the product
      *
-     * @author Nguyễn Nhật Hùng - CE160506
      * @param quantity the quantity of the product
+     * @author Nguyễn Nhật Hùng - CE160506
      */
     public void setQuantity(int quantity) {
         this.quantity = quantity;
