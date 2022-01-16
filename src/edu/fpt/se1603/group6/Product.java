@@ -122,4 +122,11 @@ public class Product implements Serializable {
         this.quantity = quantity;
     }
 
+    public double calculateAmount() {
+        return getQuantity() * getPrice();
+    }
+
+    public String toString() {
+        return String.format("| %-18s | %8d | %4.0f$ | %5.0f$ |", getName(), getQuantity(), getPrice(), calculateAmount());
+    }
 }
