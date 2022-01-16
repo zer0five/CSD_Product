@@ -32,4 +32,15 @@ public class ProductSerialize {
            return list;
         }
     }
+
+    public boolean saveProducts(LinkedList<Product> list) {
+        try {
+            FileOutputStream fos = new FileOutputStream(file);
+            ObjectOutputStream oos = new ObjectOutputStream(fos);
+            oos.writeObject(list);
+            return true;
+        } catch (IOException e) {
+            return false;
+        }
+    }
 }
