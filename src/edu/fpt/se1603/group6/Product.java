@@ -1,6 +1,7 @@
 package edu.fpt.se1603.group6;
 
 import java.io.Serializable;
+
 /**
  * class Product
  *
