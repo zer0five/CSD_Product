@@ -7,6 +7,7 @@ import java.io.Serializable;
  * @author Nguyễn Nhật Hùng - CE160506
  */
 public class Product implements Serializable {
+
     /**
      * ID of the product
      */

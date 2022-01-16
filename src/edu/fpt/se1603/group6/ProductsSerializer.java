@@ -4,22 +4,23 @@ import java.io.*;
 import java.util.LinkedList;
 
 /**
- * class ProductSerialize
+ * class ProductsSerializer
  *
  * @author Trịnh Đức Tuấn Khoa - CE160799
  */
-public class ProductSerialize {
+public class ProductsSerializer implements Serializer<LinkedList<Product>> {
+
     /**
      * The file
      */
     private File file;
 
     /**
-     * Constructor of ProductSerialize class
+     * Constructor of ProductsSerializer class
      *
      * @param fileName File name
      */
-    public ProductSerialize(String fileName) {
+    public ProductsSerializer(String fileName) {
         this.file = new File(fileName);
     }
 
@@ -43,12 +44,29 @@ public class ProductSerialize {
     }
 
     /**
+     * Save Products to file
+     *
+     * @return true if success, otherwise false
+     * @author Trịnh Đức Tuấn Khoa - CE160799
+     */
+    @Override
+    public boolean serialize(LinkedList<Product> products) {
+        try (ObjectOutputStream oos = new ObjectOutputStream(new FileOutputStream(file))) {
+            oos.writeObject(products);
+            return true;
+        } catch (IOException e) {
+            return false;
+        }
+    }
+
+    /**
      * Load Products to LinkedList
      *
-     * @author Trịnh Đức Tuấn Khoa - CE160799
      * @return An empty LinkedList if file is not exists or load failed, otherwise LinkedList of Products
+     * @author Trịnh Đức Tuấn Khoa - CE160799
      */
-    public LinkedList<Product> loadProducts() {
+    @Override
+    public LinkedList<Product> deserialize() {
         if (file.exists()) {
             try (ObjectInputStream ois = new ObjectInputStream(new FileInputStream(file))) {
                 // noinspection unchecked
@@ -60,18 +78,4 @@ public class ProductSerialize {
         return new LinkedList<>();
     }
 
-    /**
-     * Save Products to file
-     *
-     * @author Trịnh Đức Tuấn Khoa - CE160799
-     * @return true if success, otherwise false
-     */
-    public boolean saveProducts(LinkedList<Product> list) {
-        try (ObjectOutputStream oos = new ObjectOutputStream(new FileOutputStream(file))) {
-            oos.writeObject(list);
-            return true;
-        } catch (IOException e) {
-            return false;
-        }
-    }
 }
