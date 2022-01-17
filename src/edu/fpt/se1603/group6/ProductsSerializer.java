@@ -32,12 +32,15 @@ public class ProductsSerializer implements Serializer<LinkedList<Product>> {
      */
     @Override
     public boolean serialize(LinkedList<Product> products) {
-        try (ObjectOutputStream oos = new ObjectOutputStream(new FileOutputStream(file))) {
-            oos.writeObject(products);
-            return true;
-        } catch (IOException e) {
-            return false;
+        if (file.getParentFile().exists() || file.getParentFile().mkdirs()) {
+            try (ObjectOutputStream oos = new ObjectOutputStream(new FileOutputStream(file))) {
+                oos.writeObject(products);
+                return true;
+            } catch (IOException ignored) {
+                // IGNORED
+            }
         }
+        return false;
     }
 
     /**
