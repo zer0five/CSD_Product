@@ -93,8 +93,8 @@ public class ProductManager extends Manager<Product> {
             }
         }
         product.setName(input.getStringNotEmpty("Please enter product name: "));
-        product.setQuantity(input.getInt("Please enter product quantity: ", 0));
-        product.setPrice(input.getDouble("Please enter product price: ", 0));
+        product.setQuantity(input.getInt("Please enter product quantity: ", 1));
+        product.setPrice(input.getDouble("Please enter product price: ", 1));
         return product;
     }
 
@@ -119,9 +119,9 @@ public class ProductManager extends Manager<Product> {
         if (query.isEmpty()) {
             display();
         } else {
-            System.out.println("+-----+--------------------+----------+-------+--------+");
-            System.out.println("| ID  | Product            | Quantity | Price | Amount |");
-            System.out.println("+-----+--------------------+----------+-------+--------+");
+            System.out.println("+-----+--------------------+----------+-------+");
+            System.out.println("| ID  | Product            | Quantity | Price |");
+            System.out.println("+-----+--------------------+----------+-------+");
             boolean found = false;
             for (Product product : list) {
                 if (product.getName().toLowerCase().contains(query)) {
@@ -132,9 +132,9 @@ public class ProductManager extends Manager<Product> {
                 }
             }
             if (!found) {
-                System.out.println("|                  No product found!                   |");
+                System.out.println("|             No product found!               |");
             }
-            System.out.println("+-----+--------------------+----------+-------+--------+");
+            System.out.println("+-----+--------------------+----------+-------+");
         }
     }
 
