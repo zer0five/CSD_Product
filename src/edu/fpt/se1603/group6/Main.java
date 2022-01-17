@@ -4,9 +4,5 @@ public class Main {
 
     public static void main(String[] args) {
         System.out.println("+-----+------------------+--------+----+------+");
-        System.out.println("|  ID |    Name          |");
-        System.out.println("Happy New Year");
-
-        System.out.println("hùng");
     }
 }
