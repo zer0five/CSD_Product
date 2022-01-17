@@ -22,7 +22,9 @@ public class Main {
         do {
             choice = productManager.choice();
         } while (productManager.handle(choice));
-        productsSerializer.serialize(productManager.getProducts());
+        if (!productsSerializer.serialize(productManager.getProducts())) {
+            System.out.println("Error: Can't save products to file");
+        }
     }
 
 }
