@@ -11,9 +11,13 @@ public class Input {
     }
 
     public String getString(String message) {
+        System.out.print(message);
+        return scanner.nextLine().trim();
+    }
+
+    public String getStringNotEmpty(String message) {
         while (true) {
-            System.out.print(message);
-            String input = scanner.nextLine().trim();
+            String input = getString(message);
             if (input.isEmpty()) {
                 System.out.println("You must enter something!");
             } else {
@@ -25,7 +29,7 @@ public class Input {
     public int getInt(String message) {
         while (true) {
             try {
-                return Integer.parseInt(getString(message));
+                return Integer.parseInt(getStringNotEmpty(message));
             } catch (NumberFormatException e) {
                 System.out.println("You must enter a number!");
             }
@@ -46,7 +50,7 @@ public class Input {
     public double getDouble(String message) {
         while (true) {
             try {
-                return Double.parseDouble(getString(message));
+                return Double.parseDouble(getStringNotEmpty(message));
             } catch (NumberFormatException e) {
                 System.out.println("You must enter a number!");
             }

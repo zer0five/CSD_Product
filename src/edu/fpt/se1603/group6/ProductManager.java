@@ -18,7 +18,7 @@ public class ProductManager extends Manager<Product> {
         System.out.println("2. Find product by name");
         System.out.println("3. Update product information");
         System.out.println("4. Quit");
-        return input.getString("Enter your choice: ");
+        return input.getStringNotEmpty("Enter your choice: ");
     }
 
     @Override
@@ -58,7 +58,7 @@ public class ProductManager extends Manager<Product> {
                 break;
             }
         }
-        product.setName(input.getString("Enter name: "));
+        product.setName(input.getStringNotEmpty("Enter name: "));
         product.setQuantity(input.getInt("Enter quantity: ", 0));
         product.setPrice(input.getDouble("Enter price: ", 0));
         return product;
@@ -99,22 +99,26 @@ public class ProductManager extends Manager<Product> {
     public void search() {
         System.out.println("====[ Find product ]====");
         String query = input.getString("Enter name: ").toLowerCase();
-        System.out.println("+-----+--------------------+----------+-------+--------+");
-        System.out.println("| ID  | Name               | Quantity | Price | Amount |");
-        System.out.println("+-----+--------------------+----------+-------+--------+");
-        boolean found = false;
-        for (Product product : list) {
-            if (product.getName().toLowerCase().contains(query)) {
-                System.out.println(product);
-                if (!found) {
-                    found = true;
+        if (query.isEmpty()) {
+            display();
+        } else {
+            System.out.println("+-----+--------------------+----------+-------+--------+");
+            System.out.println("| ID  | Name               | Quantity | Price | Amount |");
+            System.out.println("+-----+--------------------+----------+-------+--------+");
+            boolean found = false;
+            for (Product product : list) {
+                if (product.getName().toLowerCase().contains(query)) {
+                    System.out.println(product);
+                    if (!found) {
+                        found = true;
+                    }
                 }
             }
+            if (!found) {
+                System.out.printf("| %-48s |", "No product found!");
+            }
+            System.out.println("+-----+--------------------+----------+-------+--------+");
         }
-        if (!found) {
-            System.out.printf("| %-48s |", "No product found!");
-        }
-        System.out.println("+-----+--------------------+----------+-------+--------+");
     }
 
     public Optional<Product> getProductById(int id) {
