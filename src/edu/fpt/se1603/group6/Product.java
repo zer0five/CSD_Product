@@ -123,9 +123,9 @@ public class Product implements Serializable {
     }
 
     /**
-     * calculate the amount
+     * Calculate the amount
      *
-     * @return calculateAmount
+     * @return calculated amount
      * @author Nguyễn Nhật Hùng - CE160506
      */
     public double calculateAmount() {
@@ -133,13 +133,13 @@ public class Product implements Serializable {
     }
 
     /**
-     * toString
+     * Format the product information
      *
-     * @return toString
+     * @return a formatted string of the product information
      * @author Nguyễn Nhật Hùng - CE160506
      */
     @Override
     public String toString() {
-        return String.format("| %5d | %-18s | %8d | %3.0f$ | %4.0f$ |",getId(), getName(), getQuantity(), getPrice(), calculateAmount());
+        return String.format("| %5d | %-18s | %8d | %3.0f$ | %4.0f$ |", getId(), getName(), getQuantity(), getPrice(), calculateAmount());
     }
 }

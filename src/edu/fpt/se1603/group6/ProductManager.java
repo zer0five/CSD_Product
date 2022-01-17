@@ -87,21 +87,21 @@ public class ProductManager extends Manager<Product> {
 
     @Override
     public void display() {
-        System.out.println("+--------------------+----------+-------+--------+");
-        System.out.println("| Name               | Quantity | Price | Amount |");
-        System.out.println("+--------------------+----------+-------+--------+");
+        System.out.println("+-----+--------------------+----------+-------+--------+");
+        System.out.println("| ID  | Name               | Quantity | Price | Amount |");
+        System.out.println("+-----+--------------------+----------+-------+--------+");
         for (Product product : list) {
             System.out.println(product);
         }
-        System.out.println("+--------------------+----------+-------+--------+");
+        System.out.println("+-----+--------------------+----------+-------+--------+");
     }
 
     public void search() {
         System.out.println("====[ Find product ]====");
         String query = input.getString("Enter name: ").toLowerCase();
-        System.out.println("+--------------------+----------+-------+--------+");
-        System.out.println("| Name               | Quantity | Price | Amount |");
-        System.out.println("+--------------------+----------+-------+--------+");
+        System.out.println("+-----+--------------------+----------+-------+--------+");
+        System.out.println("| ID  | Name               | Quantity | Price | Amount |");
+        System.out.println("+-----+--------------------+----------+-------+--------+");
         boolean found = false;
         for (Product product : list) {
             if (product.getName().toLowerCase().contains(query)) {
@@ -114,7 +114,7 @@ public class ProductManager extends Manager<Product> {
         if (!found) {
             System.out.printf("| %-48s |", "No product found!");
         }
-        System.out.println("+--------------------+----------+-------+--------+");
+        System.out.println("+-----+--------------------+----------+-------+--------+");
     }
 
     public Optional<Product> getProductById(int id) {
