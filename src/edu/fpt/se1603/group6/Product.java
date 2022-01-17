@@ -142,4 +142,5 @@ public class Product implements Serializable {
     public String toString() {
         return String.format("| %3d | %-18s | %8d | %4.0f$ | %5.0f$ |", getId(), getName(), getQuantity(), getPrice(), calculateAmount());
     }
+
 }

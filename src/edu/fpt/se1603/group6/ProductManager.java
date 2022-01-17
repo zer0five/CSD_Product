@@ -199,4 +199,5 @@ public class ProductManager extends Manager<Product> {
     public LinkedList<Product> getProducts() {
         return list;
     }
+
 }
