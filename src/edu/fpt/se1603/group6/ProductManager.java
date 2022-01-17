@@ -34,6 +34,7 @@ public class ProductManager extends Manager<Product> {
      */
     @Override
     public String choice() {
+        System.out.println("====[ Product Manager ]====");
         System.out.println("1. Add a product");
         System.out.println("2. Find product by name");
         System.out.println("3. Update product information");
@@ -82,7 +83,7 @@ public class ProductManager extends Manager<Product> {
     public Product input() {
         Product product = new Product();
         while (true) {
-            int id = input.getInt("Enter id: ");
+            int id = input.getInt("Enter product id: ");
             Optional<Product> productOptional = getProductById(id);
             if (productOptional.isPresent()) {
                 System.out.println("Id is existed, please try again!");
@@ -91,9 +92,9 @@ public class ProductManager extends Manager<Product> {
                 break;
             }
         }
-        product.setName(input.getStringNotEmpty("Enter name: "));
-        product.setQuantity(input.getInt("Enter quantity: ", 0));
-        product.setPrice(input.getDouble("Enter price: ", 0));
+        product.setName(input.getStringNotEmpty("Enter product name: "));
+        product.setQuantity(input.getInt("Enter product quantity: ", 0));
+        product.setPrice(input.getDouble("Enter product price: ", 0));
         return product;
     }
 
@@ -114,7 +115,7 @@ public class ProductManager extends Manager<Product> {
      */
     public void search() {
         System.out.println("====[ Find product ]====");
-        String query = input.getString("Enter name: ").toLowerCase();
+        String query = input.getString("Enter product name: ").toLowerCase();
         if (query.isEmpty()) {
             display();
         } else {
@@ -162,7 +163,7 @@ public class ProductManager extends Manager<Product> {
         System.out.println("====[ Edit product ]====");
         Product product;
         while (true) {
-            int id = input.getInt("Enter id: ");
+            int id = input.getInt("Enter product id: ");
             Optional<Product> optionalProduct = getProductById(id);
             if (optionalProduct.isPresent()) {
                 product = optionalProduct.get();
