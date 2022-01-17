@@ -83,7 +83,7 @@ public class ProductManager extends Manager<Product> {
     public Product input() {
         Product product = new Product();
         while (true) {
-            int id = input.getInt("Enter product id: ");
+            int id = input.getInt("Please Enter product id: ");
             Optional<Product> productOptional = getProductById(id);
             if (productOptional.isPresent()) {
                 System.out.println("Id is existed, please try again!");
@@ -92,9 +92,9 @@ public class ProductManager extends Manager<Product> {
                 break;
             }
         }
-        product.setName(input.getStringNotEmpty("Enter product name: "));
-        product.setQuantity(input.getInt("Enter product quantity: ", 0));
-        product.setPrice(input.getDouble("Enter product price: ", 0));
+        product.setName(input.getStringNotEmpty("Please Enter product name: "));
+        product.setQuantity(input.getInt("Please Enter product quantity: ", 0));
+        product.setPrice(input.getDouble("Please Enter product price: ", 0));
         return product;
     }
 
@@ -115,7 +115,7 @@ public class ProductManager extends Manager<Product> {
      */
     public void search() {
         System.out.println("====[ Find product ]====");
-        String query = input.getString("Enter product name: ").toLowerCase();
+        String query = input.getString("Please Enter product name: ").toLowerCase();
         if (query.isEmpty()) {
             display();
         } else {
@@ -163,7 +163,7 @@ public class ProductManager extends Manager<Product> {
         System.out.println("====[ Edit product ]====");
         Product product;
         while (true) {
-            int id = input.getInt("Enter product id: ");
+            int id = input.getInt("Please Enter product id: ");
             Optional<Product> optionalProduct = getProductById(id);
             if (optionalProduct.isPresent()) {
                 product = optionalProduct.get();
