@@ -32,12 +32,34 @@ public class Input {
         }
     }
 
+    public int getInt(String message, int min) {
+        while (true) {
+            int input = getInt(message);
+            if (input < min) {
+                System.out.println("You must enter a number greater than " + min + "!");
+            } else {
+                return input;
+            }
+        }
+    }
+
     public double getDouble(String message) {
         while (true) {
             try {
                 return Double.parseDouble(getString(message));
             } catch (NumberFormatException e) {
                 System.out.println("You must enter a number!");
+            }
+        }
+    }
+
+    public double getDouble(String message, double min) {
+        while (true) {
+            double input = getDouble(message);
+            if (input < min) {
+                System.out.println("You must enter a number greater than " + min + "!");
+            } else {
+                return input;
             }
         }
     }

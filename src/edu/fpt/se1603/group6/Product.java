@@ -140,6 +140,6 @@ public class Product implements Serializable {
      */
     @Override
     public String toString() {
-        return String.format("| %-18s | %8d | %4.0f$ | %5.0f$ |", getName(), getQuantity(), getPrice(), calculateAmount());
+        return String.format("| %-18s | %8d | %3.0f$ | %4.0f$ |", getName(), getQuantity(), getPrice(), calculateAmount());
     }
 }

@@ -4,23 +4,21 @@ import java.util.LinkedList;
 
 public abstract class Manager<T> {
 
-    protected final LinkedList<T> list;
+    protected LinkedList<T> list;
 
-    protected Manager() {
-        this.list = new LinkedList<>();
+    protected Manager(LinkedList<T> list) {
+        this.list = list;
     }
 
     public abstract String choice();
 
-    public abstract void handler(String choice);
+    public abstract boolean handler(String choice);
 
     public abstract T input();
 
-    public abstract void add(T t);
+    public abstract void add();
 
-    public abstract void edit(T t);
+    public abstract void update();
 
-    public abstract void find(String query);
-
-    public abstract T findExact(String query);
+    public abstract void display();
 }

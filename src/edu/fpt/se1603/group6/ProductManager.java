@@ -1,57 +1,48 @@
 package edu.fpt.se1603.group6;
 
-import java.util.Scanner;
+import java.util.LinkedList;
+import java.util.Optional;
 
 public class ProductManager extends Manager<Product> {
 
     private final Input input;
 
-    public ProductManager() {
-        super();
+    public ProductManager(LinkedList<Product> list) {
+        super(list);
         this.input = new Input();
     }
 
     @Override
     public String choice() {
-        System.out.println("1. Add product");
-        System.out.println("2. Find product");
-        System.out.println("3. Edit product");
+        System.out.println("1. Add a product");
+        System.out.println("2. Find product by name");
+        System.out.println("3. Update product information");
         System.out.println("4. Quit");
         return input.getString("Enter your choice: ");
     }
 
     @Override
-    public void handler(String choice) {
+    public boolean handler(String choice) {
         switch (choice) {
             case "1":
-                System.out.println("====[ Add product ]====");
-                add(input());
+                add();
+                display();
                 break;
             case "2":
-                System.out.println("====[ Find product ]====");
-                find(input.getString("Enter name: "));
+                search();
                 break;
             case "3":
-                System.out.println("====[ Edit product ]====");
-                Product product;
-                while (true) {
-                    int id = input.getInt("Enter id: ");
-                    product = findExact(String.valueOf(id));
-                    if (product == null) {
-                        System.out.println("Product with id " + id + " is not existed!");
-                    } else {
-                        break;
-                    }
-                }
-                edit(product);
+                update();
+                display();
                 break;
             case "4":
                 System.out.println("Goodbye!");
-                break;
+                return false;
             default:
                 System.out.println("Invalid choice, please choose from 1 to 4!");
                 break;
         }
+        return true;
     }
 
     @Override
@@ -59,47 +50,83 @@ public class ProductManager extends Manager<Product> {
         Product product = new Product();
         while (true) {
             int id = input.getInt("Enter id: ");
-            if (findExact(String.valueOf(id)) == null) {
+            Optional<Product> productOptional = getProductById(id);
+            if (productOptional.isPresent()) {
+                System.out.println("Id is existed, please try again!");
+            } else {
                 product.setId(id);
                 break;
-            } else {
-                System.out.println("Id is existed, please try again!");
             }
         }
         product.setName(input.getString("Enter name: "));
-        product.setQuantity(input.getInt("Enter quantity: "));
-        product.setPrice(input.getDouble("Enter price: "));
+        product.setQuantity(input.getInt("Enter quantity: ", 0));
+        product.setPrice(input.getDouble("Enter price: ", 0));
         return product;
     }
 
-    @Override
-    public void add(Product product) {
-        list.add(product);
+    public void add() {
+        System.out.println("====[ Add product ]====");
+        list.add(input());
+    }
+
+    public void update() {
+        System.out.println("====[ Edit product ]====");
+        Product product;
+        while (true) {
+            int id = input.getInt("Enter id: ");
+            Optional<Product> optionalProduct = getProductById(id);
+            if (optionalProduct.isPresent()) {
+                product = optionalProduct.get();
+                break;
+            } else {
+                System.out.println("Product with id " + id + " is not existed!");
+            }
+        }
+        product.setPrice(input.getDouble("Please input new price for product: "));
     }
 
     @Override
-    public void edit(Product product) {
-        Scanner sc = new Scanner(System.in);
-        System.out.print("Please input price for product: ");
-        product.setPrice(sc.nextDouble());
-    }
-
-    @Override
-    public void find(String name) {
+    public void display() {
+        System.out.println("+--------------------+----------+-------+--------+");
+        System.out.println("| Name               | Quantity | Price | Amount |");
+        System.out.println("+--------------------+----------+-------+--------+");
         for (Product product : list) {
-            if (product.getName().toLowerCase().contains(name.toLowerCase())) {
+            System.out.println(product);
+        }
+        System.out.println("+--------------------+----------+-------+--------+");
+    }
+
+    public void search() {
+        System.out.println("====[ Find product ]====");
+        String query = input.getString("Enter name: ").toLowerCase();
+        System.out.println("+--------------------+----------+-------+--------+");
+        System.out.println("| Name               | Quantity | Price | Amount |");
+        System.out.println("+--------------------+----------+-------+--------+");
+        boolean found = false;
+        for (Product product : list) {
+            if (product.getName().toLowerCase().contains(query)) {
                 System.out.println(product);
+                if (!found) {
+                    found = true;
+                }
             }
         }
+        if (!found) {
+            System.out.printf("| %-48s |", "No product found!");
+        }
+        System.out.println("+--------------------+----------+-------+--------+");
     }
 
-    @Override
-    public Product findExact(String id) {
+    public Optional<Product> getProductById(int id) {
         for (Product product : list) {
-            if (String.valueOf(product.getId()).equals(id)) {
-                return product;
+            if (product.getId() == id) {
+                return Optional.of(product);
             }
         }
-        return null;
+        return Optional.empty();
+    }
+
+    public LinkedList<Product> getProducts() {
+        return list;
     }
 }
