@@ -12,7 +12,7 @@ public abstract class Manager<T> {
 
     public abstract String choice();
 
-    public abstract boolean handler(String choice);
+    public abstract boolean handle(String choice);
 
     public abstract T input();
 

@@ -8,7 +8,10 @@ public class Main {
         ProductsSerializer productsSerializer = new ProductsSerializer("products.txt");
         LinkedList<Product> products = productsSerializer.deserialize();
         ProductManager productManager = new ProductManager(products);
-        while (productManager.handler(productManager.choice())) ;
+        String choice;
+        do {
+            choice = productManager.choice();
+        } while (productManager.handle(choice));
         productsSerializer.serialize(productManager.getProducts());
     }
 }

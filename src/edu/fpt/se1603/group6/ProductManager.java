@@ -22,7 +22,7 @@ public class ProductManager extends Manager<Product> {
     }
 
     @Override
-    public boolean handler(String choice) {
+    public boolean handle(String choice) {
         switch (choice) {
             case "1":
                 add();
@@ -88,7 +88,7 @@ public class ProductManager extends Manager<Product> {
     @Override
     public void display() {
         System.out.println("+-----+--------------------+----------+-------+--------+");
-        System.out.println("| ID  | Name               | Quantity | Price | Amount |");
+        System.out.println("| ID  | Product            | Quantity | Price | Amount |");
         System.out.println("+-----+--------------------+----------+-------+--------+");
         for (Product product : list) {
             System.out.println(product);
@@ -103,7 +103,7 @@ public class ProductManager extends Manager<Product> {
             display();
         } else {
             System.out.println("+-----+--------------------+----------+-------+--------+");
-            System.out.println("| ID  | Name               | Quantity | Price | Amount |");
+            System.out.println("| ID  | Product            | Quantity | Price | Amount |");
             System.out.println("+-----+--------------------+----------+-------+--------+");
             boolean found = false;
             for (Product product : list) {
