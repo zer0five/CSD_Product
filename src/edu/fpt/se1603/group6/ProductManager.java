@@ -3,15 +3,35 @@ package edu.fpt.se1603.group6;
 import java.util.LinkedList;
 import java.util.Optional;
 
+/**
+ * ProductManager class
+ *
+ * @author Group 6 members
+ */
 public class ProductManager extends Manager<Product> {
 
+    /**
+     * Instance of input
+     */
     private final Input input;
 
+    /**
+     * Constructor of ProductManager
+     *
+     * @param list List of products
+     * @author Giang Trương Gia Lạc - CE160766
+     */
     public ProductManager(LinkedList<Product> list) {
         super(list);
         this.input = new Input();
     }
 
+    /**
+     * Display menu and get user choice
+     *
+     * @return The user choice
+     * @author Giang Trương Gia Lạc - CE160766
+     */
     @Override
     public String choice() {
         System.out.println("1. Add a product");
@@ -21,6 +41,13 @@ public class ProductManager extends Manager<Product> {
         return input.getStringNotEmpty("Enter your choice: ");
     }
 
+    /**
+     * Handle user choice
+     *
+     * @param choice user choice
+     * @return true if user want to continue, false if user want to quit
+     * @author Giang Trương Gia Lạc - CE160766
+     */
     @Override
     public boolean handle(String choice) {
         switch (choice) {
@@ -45,6 +72,12 @@ public class ProductManager extends Manager<Product> {
         return true;
     }
 
+    /**
+     * Input product information
+     *
+     * @return The product
+     * @author Trương Hồ Gia Anh - CE160788
+     */
     @Override
     public Product input() {
         Product product = new Product();
@@ -64,11 +97,21 @@ public class ProductManager extends Manager<Product> {
         return product;
     }
 
+    /**
+     * Add a product to list
+     *
+     * @author Trương Hồ Gia Anh - CE160788
+     */
     public void add() {
         System.out.println("====[ Add product ]====");
         list.add(input());
     }
 
+    /**
+     * Search product by name and display all matched products
+     *
+     * @author Phạm Trịnh Trọng Trường - CE160865
+     */
     public void search() {
         System.out.println("====[ Find product ]====");
         String query = input.getString("Enter name: ").toLowerCase();
@@ -94,6 +137,13 @@ public class ProductManager extends Manager<Product> {
         }
     }
 
+    /**
+     * Get product by id
+     *
+     * @param id id of product
+     * @return Optional of product
+     * @author Trương Hồ Gia Anh - CE160788
+     */
     public Optional<Product> getProductById(int id) {
         for (Product product : list) {
             if (product.getId() == id) {
@@ -103,6 +153,11 @@ public class ProductManager extends Manager<Product> {
         return Optional.empty();
     }
 
+    /**
+     * Update product information
+     *
+     * @author Trương Hồ Gia Anh - CE160788
+     */
     public void update() {
         System.out.println("====[ Edit product ]====");
         Product product;
@@ -119,6 +174,11 @@ public class ProductManager extends Manager<Product> {
         product.setPrice(input.getDouble("Please input new price for product: "));
     }
 
+    /**
+     * Display all products
+     *
+     * @author Phạm Trịnh Trọng Trường - CE160865
+     */
     @Override
     public void display() {
         System.out.println("+-----+--------------------+----------+-------+--------+");
