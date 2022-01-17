@@ -86,7 +86,7 @@ public class ProductManager extends Manager<Product> {
             int id = input.getInt("Please enter product id: ");
             Optional<Product> productOptional = getProductById(id);
             if (productOptional.isPresent()) {
-                System.out.println("Id is existed, please try again!");
+                System.out.println("This ID is existed, please try again!");
             } else {
                 product.setId(id);
                 break;
