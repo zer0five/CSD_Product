@@ -190,6 +190,12 @@ public class ProductManager extends Manager<Product> {
         System.out.println("+-----+--------------------+----------+-------+--------+");
     }
 
+    /**
+     * Get list of products
+     *
+     * @return list of products
+     * @author Giang Trương Gia Lạc - CE160766
+     */
     public LinkedList<Product> getProducts() {
         return list;
     }
