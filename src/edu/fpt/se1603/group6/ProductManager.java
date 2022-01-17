@@ -177,7 +177,7 @@ public class ProductManager extends Manager<Product> {
         System.out.println("+-----+--------------------+----------+-------+--------+");
         System.out.println(product);
         System.out.println("+-----+--------------------+----------+-------+--------+");
-        double price = input.getDouble("Please input new price for product: ", 0);
+        double price = input.getDouble("Please enter new price for product: ", 0);
         if (price == product.getPrice()) {
             System.out.println("Warning: Price is not changed!");
         } else {
