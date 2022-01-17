@@ -115,7 +115,7 @@ public class ProductManager extends Manager<Product> {
                 }
             }
             if (!found) {
-                System.out.printf("| %-48s |", "No product found!");
+                System.out.printf("| %-48s |%n", "No product found!");
             }
             System.out.println("+-----+--------------------+----------+-------+--------+");
         }
