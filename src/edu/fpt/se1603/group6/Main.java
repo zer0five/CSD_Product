@@ -23,7 +23,9 @@ public class Main {
             choice = productManager.choice();
         } while (productManager.handle(choice));
         if (!productsSerializer.serialize(productManager.getProducts())) {
-            System.out.println("Error: Can't save products to file");
+            System.out.println("Warning: Cannot save products to file, your data may be lost!");
+            System.out.println("Here is the list of products:");
+            productManager.display();
         }
     }
 
