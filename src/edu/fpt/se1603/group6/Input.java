@@ -5,7 +5,7 @@ import java.util.Scanner;
 /**
  * Input utils
  *
- * @author Giang Trương Gia Lạc
+ * @author Giang Trương Gia Lạc - CE160766
  */
 public class Input {
 
@@ -17,7 +17,7 @@ public class Input {
     /**
      * Constructor for Input class
      *
-     * @author Giang Trương Gia Lạc
+     * @author Giang Trương Gia Lạc - CE160766
      */
     public Input() {
         this.scanner = new Scanner(System.in);
@@ -28,7 +28,7 @@ public class Input {
      *
      * @param message Message to display
      * @return The string
-     * @author Giang Trương Gia Lạc
+     * @author Giang Trương Gia Lạc - CE160766
      */
     public String getString(String message) {
         System.out.print(message);
@@ -40,7 +40,7 @@ public class Input {
      *
      * @param message Message to display
      * @return The string (not empty)
-     * @author Giang Trương Gia Lạc
+     * @author Giang Trương Gia Lạc - CE160766
      */
     public String getStringNotEmpty(String message) {
         while (true) {
@@ -58,7 +58,7 @@ public class Input {
      *
      * @param message Message to display
      * @return The integer
-     * @author Giang Trương Gia Lạc
+     * @author Giang Trương Gia Lạc - CE160766
      */
     public int getInt(String message) {
         while (true) {
@@ -76,7 +76,7 @@ public class Input {
      * @param message Message to display
      * @param min     Minimum value
      * @return The integer
-     * @author Giang Trương Gia Lạc
+     * @author Giang Trương Gia Lạc - CE160766
      */
     public int getInt(String message, int min) {
         while (true) {
@@ -94,7 +94,7 @@ public class Input {
      *
      * @param message Message to display
      * @return The double
-     * @author Giang Trương Gia Lạc
+     * @author Giang Trương Gia Lạc - CE160766
      */
     public double getDouble(String message) {
         while (true) {
@@ -112,7 +112,7 @@ public class Input {
      * @param message Message to display
      * @param min     Minimum value
      * @return The double
-     * @author Giang Trương Gia Lạc
+     * @author Giang Trương Gia Lạc - CE160766
      */
     public double getDouble(String message, double min) {
         while (true) {
