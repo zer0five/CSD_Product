@@ -13,7 +13,7 @@ public class ProductsSerializer implements Serializer<LinkedList<Product>> {
     /**
      * The file
      */
-    private File file;
+    private final File file;
 
     /**
      * Constructor of ProductsSerializer class
@@ -22,25 +22,6 @@ public class ProductsSerializer implements Serializer<LinkedList<Product>> {
      */
     public ProductsSerializer(String fileName) {
         this.file = new File(fileName);
-    }
-
-    /**
-     * Get file
-     *
-     * @return The file
-     * @author Trịnh Đức Tuấn Khoa - CE160799
-     */
-    public File getFile() {
-        return file;
-    }
-
-    /**
-     * Set file
-     *
-     * @author Trịnh Đức Tuấn Khoa - CE160799
-     */
-    public void setFile(File file) {
-        this.file = file;
     }
 
     /**
