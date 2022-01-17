@@ -69,33 +69,6 @@ public class ProductManager extends Manager<Product> {
         list.add(input());
     }
 
-    public void update() {
-        System.out.println("====[ Edit product ]====");
-        Product product;
-        while (true) {
-            int id = input.getInt("Enter id: ");
-            Optional<Product> optionalProduct = getProductById(id);
-            if (optionalProduct.isPresent()) {
-                product = optionalProduct.get();
-                break;
-            } else {
-                System.out.println("Product with id " + id + " is not existed!");
-            }
-        }
-        product.setPrice(input.getDouble("Please input new price for product: "));
-    }
-
-    @Override
-    public void display() {
-        System.out.println("+-----+--------------------+----------+-------+--------+");
-        System.out.println("| ID  | Product            | Quantity | Price | Amount |");
-        System.out.println("+-----+--------------------+----------+-------+--------+");
-        for (Product product : list) {
-            System.out.println(product);
-        }
-        System.out.println("+-----+--------------------+----------+-------+--------+");
-    }
-
     public void search() {
         System.out.println("====[ Find product ]====");
         String query = input.getString("Enter name: ").toLowerCase();
@@ -128,6 +101,33 @@ public class ProductManager extends Manager<Product> {
             }
         }
         return Optional.empty();
+    }
+
+    public void update() {
+        System.out.println("====[ Edit product ]====");
+        Product product;
+        while (true) {
+            int id = input.getInt("Enter id: ");
+            Optional<Product> optionalProduct = getProductById(id);
+            if (optionalProduct.isPresent()) {
+                product = optionalProduct.get();
+                break;
+            } else {
+                System.out.println("Product with id " + id + " is not existed!");
+            }
+        }
+        product.setPrice(input.getDouble("Please input new price for product: "));
+    }
+
+    @Override
+    public void display() {
+        System.out.println("+-----+--------------------+----------+-------+--------+");
+        System.out.println("| ID  | Product            | Quantity | Price | Amount |");
+        System.out.println("+-----+--------------------+----------+-------+--------+");
+        for (Product product : list) {
+            System.out.println(product);
+        }
+        System.out.println("+-----+--------------------+----------+-------+--------+");
     }
 
     public LinkedList<Product> getProducts() {
